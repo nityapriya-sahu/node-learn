@@ -1,18 +1,28 @@
 // Node js work behind the scenes through below code
 
+const https = require("https");
+const fs = require("fs");
+
+console.log("Hello World");
+
 var a = 100;
 var b = 200;
 
-https.get("https://api.fbi.com", (res) => {
-  console.log(res?.secret);
+//Synchronous
+fs.readFileSync("./dummyfile.txt", "utf-8"); //10ms
+console.log("This will execute only after file read.");
+
+https.get("https://dummyjson.com/products/1", (res) => {
+  console.log("fetched data sucessfully");
 });
 
 setTimeout(() => {
-  console.log("settimeout");
+  console.log("settimeout after 5 second");
 }, 5000);
 
-fs.readFile("./hello.txt", "utf8", (data) => {
-  console.log("log data", data);
+//Async Function
+fs.readFile("./dummyfile.txt", "utf8", (err, data) => {
+  console.log("log file data: ", data);
 });
 
 function multiply(a, b) {
@@ -21,7 +31,7 @@ function multiply(a, b) {
 }
 
 var c = multiply(a, b);
-console.log(c);
+console.log("Result is : ", c);
 
 //=================================================================
 
