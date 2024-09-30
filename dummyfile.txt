@@ -1,0 +1,3 @@
+The V8 engine is responsible for executing JavaScript code, but it cannot 
+offload this task to Libuv (which handles asynchronous operations like I/O 
+tasks).
