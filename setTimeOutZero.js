@@ -28,8 +28,14 @@ console.log("Result is : ", c);
 
 //  The Reason:
 
-//  Asynchronous Operation: setTimeout is an asynchronous function, meaning it doesn't block the execution of the code. When you call setTimeout , the callback function is passed to Libuv (Node.js's underlying library), which manages asynchronous operations.
+//  Asynchronous Operation: setTimeout is an asynchronous function, meaning it doesn't block the execution of the code.
+// When you call setTimeout , the callback function is passed to Libuv (Node.js's underlying library),
+// which manages asynchronous operations.
 
-//  Event Loop and Call Stack: The callback function from setTimeout(0) is added to the event queue. However, it won't be executed until the current call stack is empty. This means that even if you specify a 0-millisecond delay, the callback will only execute after the global execution context is done.
+//  Event Loop and Call Stack: The callback function from setTimeout(0) is added to the event queue.
+// However, it won't be executed until the current call stack is empty. This means that even if you specify a 0-millisecond delay,
+//  the callback will only execute after the global execution context is done.
 
-//Trust Issues with setTimeout(0) : When you ask the code to run after 0 milliseconds, it doesn't necessarily run immediately after that time. It runs only when the call stack is empty. This introduces some "terms and conditions," meaning that the actual execution timing is dependent on the state of the call stack.
+//Trust Issues with setTimeout(0) : When you ask the code to run after 0 milliseconds,
+// it doesn't necessarily run immediately after that time. It runs only when the call stack is empty.
+// This introduces some "terms and conditions," meaning that the actual execution timing is dependent on the state of the call stack.
